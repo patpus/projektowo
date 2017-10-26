@@ -1,0 +1,4 @@
+Zadanie 1
+select andriej from kupsztadt
+Zadanie 2
+select andriej from kiryl
