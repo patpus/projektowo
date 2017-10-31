@@ -1,5 +1,7 @@
-package main.java;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
 
+import java.Timechecker;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,10 +13,15 @@ import java.util.Scanner;
  */
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, SchedulerException {
+        Scheduler tc = StdSchedulerFactory.getDefaultScheduler();
+        JobDetail job2 = JobBuilder.newJob(Timechecker.class).build();
+        Trigger time = TriggerBuilder.newTrigger().withIdentity("CTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 * 8-19 ? * MON,TUE,WED,THU,FRI")).build();
         checksql checksql = new checksql();
         int czyZakonczyc = 1;
         Zapis zapis = new Zapis();
+        tc.scheduleJob(job2, time);
+        tc.start();
         while (czyZakonczyc != 0) {
         System.out.println("Numer zadania:");
             BufferedReader num = new BufferedReader(new InputStreamReader(System.in));

@@ -1,4 +1,4 @@
 Zadanie 1
-select andriej from kupsztadt
+select andryiej from missisipi
 Zadanie 2
-select andriej from kiryl
+select eldo mordo from andriej
